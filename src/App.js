@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { Fragment } from 'react';
+import { useState } from 'react';
+import { Container } from '@material-ui/core';
+import SearchBar from './components/Searchbar';
+import CardContainer from './components/CardContainer';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [searchResults, setSearchResults] = useState(null);
+	const [searchParams, setSearchParams] = useState('');
+	const [nominations, setNominations] = useState([]);
+	return (
+		<Fragment>
+			<SearchBar
+				setSearchResults={setSearchResults}
+				searchResults={searchResults}
+				searchParams={searchParams}
+				setSearchParams={setSearchParams}
+			/>
+			<Container maxWidth='md'>
+				<CardContainer
+					searchResults={searchResults}
+					searchParams={searchParams}
+					nominations={nominations}
+					setNominations={setNominations}
+				/>
+			</Container>
+		</Fragment>
+	);
 }
 
 export default App;
