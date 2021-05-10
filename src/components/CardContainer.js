@@ -5,35 +5,45 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 	gridItem: {
-		width: '30%',
+		width: '100%',
 		margin: '2%',
+		[theme.breakpoints.up('sm')]: {
+			width: '100%',
+		},
+	},
+	gridContainer: {
+		width: '100%',
 	},
 }));
 
 export default function CardContainer({
-	searchResults,
-	searchParams,
+	cards,
 	nominations,
 	setNominations,
+	isNomContainer,
 }) {
 	const classes = useStyles();
 	return (
-		<Grid container direction='row' justify='center' alignItems='stretch'>
-			{/* {searchResults ? (
-				<p>Search results for {searchParams}</p>
-			) : (
-				<p>No results found for {searchParams}</p>
-			)} */}
-			{searchResults &&
-				searchResults.map((result) => {
+		<Grid
+			container
+			className={classes.gridContainer}
+			direction='column'
+			justify='center'
+			alignItems='stretch'
+		>
+			{cards &&
+				cards.map((result, index) => {
 					return (
-						<Grid item className={classes.gridItem}>
+						<Grid
+							item
+							className={classes.gridItem}
+							key={`${result.Title} ${index}`}
+						>
 							<MovieCard
-								title={result.Title}
-								year={result.Year}
-								image={result.Poster}
+								movie={result}
 								setNominations={setNominations}
 								nominations={nominations}
+								isNomContainer={isNomContainer}
 							/>
 						</Grid>
 					);

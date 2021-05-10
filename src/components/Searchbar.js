@@ -76,8 +76,6 @@ export default function SearchBar({
 			.get(`http://www.omdbapi.com/?apikey=fcb52e7a&s=${searchParams}`)
 			.then((res) => {
 				setSearchResults(res.data.Search);
-				console.log(res.data);
-				console.log(searchResults);
 			});
 	}, [searchParams]);
 
