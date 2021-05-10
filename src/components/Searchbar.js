@@ -72,7 +72,7 @@ export default function SearchBar({
 
 	useEffect(() => {
 		axios
-			.get(`http://www.omdbapi.com/?apikey=fcb52e7a&s=${searchParams}`)
+			.get(`https://www.omdbapi.com/?apikey=fcb52e7a&s=${searchParams}`)
 			.then((res) => {
 				setSearchResults(res.data.Search);
 			});
