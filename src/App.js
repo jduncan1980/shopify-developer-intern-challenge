@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import SearchBar from './components/Searchbar';

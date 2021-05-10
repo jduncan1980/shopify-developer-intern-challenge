@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchBar({
 	setSearchResults,
-	searchResults,
 	searchParams,
 	setSearchParams,
 }) {
@@ -77,6 +76,7 @@ export default function SearchBar({
 			.then((res) => {
 				setSearchResults(res.data.Search);
 			});
+		// eslint-disable-next-line
 	}, [searchParams]);
 
 	return (
