@@ -6,10 +6,6 @@ import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
 	gridItem: {
 		width: '100%',
-		margin: '2%',
-		[theme.breakpoints.up('sm')]: {
-			width: '100%',
-		},
 	},
 	gridContainer: {
 		width: '100%',
@@ -27,9 +23,10 @@ export default function CardContainer({
 		<Grid
 			container
 			className={classes.gridContainer}
+			spacing={2}
 			direction='column'
 			justify='center'
-			alignItems='stretch'
+			alignItems='center'
 		>
 			{cards &&
 				cards.map((result, index) => {

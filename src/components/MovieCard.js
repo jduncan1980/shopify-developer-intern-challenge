@@ -15,14 +15,12 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		justifyContent: 'stretch',
 		flexDirection: 'column',
-		[theme.breakpoints.up('sm')]: {
-			width: '50%',
-		},
 	},
 	media: {
 		width: '100%',
 		minHeight: '300px',
 		backgroundSize: 'contain',
+		marginTop: '10px',
 	},
 	cardContent: {
 		display: 'flex',
@@ -45,8 +43,6 @@ export default function MovieCard({
 	};
 
 	const handleUnnomination = (movie) => {
-		// const newNoms = nominations.filter((nom) => nom.Title !== movie.Title);
-		// console.log(newNoms);
 		setNominations(nominations.filter((nom) => nom !== movie));
 	};
 	return (
@@ -87,7 +83,7 @@ export default function MovieCard({
 						onClick={() => handleNomination(movie)}
 						disabled={nominations.includes(movie) ? true : false}
 					>
-						Nominate
+						Add Nominee
 					</Button>
 				)}
 			</CardActions>

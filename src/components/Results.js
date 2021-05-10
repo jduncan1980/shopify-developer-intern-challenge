@@ -1,14 +1,13 @@
 import { Container, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import CardContainer from './CardContainer.js';
-import Banner from './FiveNomsBanner';
 
 const useStyles = makeStyles((theme) => ({
 	typo: {
 		marginBottom: '10%',
 	},
 	root: {
-		backgroundColor: 'lightgray',
+		backgroundColor: '#8ba3ad',
 		minHeight: '500px',
 		padding: '10px',
 		display: 'flex',
@@ -20,19 +19,18 @@ const useStyles = makeStyles((theme) => ({
 		margin: '20px 0 20px 0',
 	},
 }));
-export default function Nominations({ nominations, setNominations }) {
+export default function Results({ cards, nominations, setNominations }) {
 	const classes = useStyles();
 	return (
 		<Container className={classes.root}>
 			<Typography className={classes.typo} align='center' variant='h3'>
-				Nominations
+				Results
 			</Typography>
-			<Banner nominations={nominations} />
 			<CardContainer
-				cards={nominations}
+				cards={cards}
 				nominations={nominations}
 				setNominations={setNominations}
-				isNomContainer={true}
+				isNomContainer={false}
 			/>
 		</Container>
 	);

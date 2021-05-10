@@ -1,14 +1,13 @@
-import React, { Fragment } from 'react';
-import { useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
+import { useLocalStorage } from './hooks/useLocalStorage';
 import SearchBar from './components/Searchbar';
-import CardContainer from './components/CardContainer';
+import Results from './components/Results';
 import Nominations from './components/Nominations';
 
 const useStyles = makeStyles((theme) => ({
 	gridItem: {
 		width: '100%',
-		margin: '2%',
 		[theme.breakpoints.up('sm')]: {
 			width: '40%',
 		},
@@ -22,7 +21,8 @@ function App() {
 	const classes = useStyles();
 	const [searchResults, setSearchResults] = useState(null);
 	const [searchParams, setSearchParams] = useState('');
-	const [nominations, setNominations] = useState([]);
+	const [nominations, setNominations] = useLocalStorage('nominations', []);
+
 	return (
 		<Fragment>
 			<SearchBar
@@ -35,15 +35,14 @@ function App() {
 				className={classes.gridContainer}
 				container
 				direction='row'
-				justify='center'
-				alignItems='center'
+				justify='space-around'
+				alignItems='flex-start'
 			>
 				<Grid className={classes.gridItem} item>
-					<CardContainer
+					<Results
 						cards={searchResults}
 						nominations={nominations}
 						setNominations={setNominations}
-						isNomContainer={false}
 					/>
 				</Grid>
 				<Grid className={classes.gridItem} item>
